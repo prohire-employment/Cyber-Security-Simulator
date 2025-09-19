@@ -1,0 +1,209 @@
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+*/
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  /* Define classes the LLM is instructed to use, applying Tailwind's styles */
+  .llm-button {
+    @apply bg-blue-700/80 text-blue-100 border border-blue-500/50 rounded-md py-2 px-4 m-1 cursor-pointer text-base font-medium text-center transition-all duration-200 hover:bg-blue-600/80 hover:border-blue-400/80 active:bg-blue-700 active:transform active:translate-y-px disabled:bg-gray-600 disabled:text-gray-400 disabled:border-gray-500 disabled:cursor-not-allowed;
+  }
+  .llm-text {
+    @apply m-2 text-base text-gray-200 leading-relaxed;
+  }
+  .llm-title {
+    /* New class for titles */
+    @apply font-bold text-xl text-gray-100 mb-3 mt-1 mx-2; /* Added mt-1 and mx-2 for consistent spacing with llm-text */
+  }
+  .llm-input,
+  .llm-textarea,
+  select.llm-input {
+    @apply m-1 p-2 w-full border border-gray-600/80 rounded-md bg-gray-900/70 font-sans text-gray-200 text-sm transition-all duration-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 backdrop-blur-sm;
+  }
+  .llm-textarea {
+    @apply min-h-[120px];
+  }
+  .llm-container {
+    @apply w-full flex flex-col items-start mb-4 gap-2 p-2;
+  }
+  .llm-row {
+    @apply w-full flex items-center mb-2 gap-2;
+  }
+  .llm-label {
+    @apply mr-1 text-sm text-gray-400;
+  }
+  /* Styles for generated icons to match desktop icons */
+  .icon {
+    @apply w-24 h-28 flex flex-col items-center justify-start text-center m-2 p-2 cursor-pointer select-none rounded-lg transition-colors hover:bg-blue-500/20 focus:bg-blue-500/20 focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+  }
+  .icon-image {
+    @apply text-5xl mb-2 drop-shadow-sm;
+  }
+  .icon-label {
+    @apply text-sm text-gray-300 font-medium break-words max-w-full leading-tight;
+  }
+  /* Styles for tables */
+  .llm-table {
+    @apply w-full text-xs text-left text-gray-300 my-0 font-mono;
+  }
+  .llm-thead {
+    @apply text-xs text-gray-300 uppercase bg-gray-700/50;
+  }
+  .llm-th,
+  .llm-td {
+    @apply px-2 py-1;
+  }
+  .llm-tr {
+    @apply bg-transparent border-b border-gray-700/50 transition-colors duration-150 cursor-pointer hover:bg-gray-700/50;
+  }
+  .llm-tr-selected {
+    @apply bg-blue-900/50; /* Highlight color for selected row */
+  }
+  /* Browser specific styles */
+  .browser-container {
+    @apply w-full h-full flex flex-col;
+  }
+  .browser-toolbar {
+    @apply flex items-center p-2 bg-gray-800/80 border-b border-gray-700/50 flex-shrink-0 gap-2;
+  }
+  .browser-address-bar {
+    @apply flex-grow bg-gray-900 border border-gray-600/80 rounded-md px-3 py-1 text-sm font-mono text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+  .browser-bookmarks {
+    @apply flex items-center p-2 bg-gray-800/50 border-b border-gray-700/50 flex-shrink-0 gap-4 text-sm;
+  }
+  .browser-bookmark {
+    @apply cursor-pointer text-blue-400 hover:text-blue-300 hover:underline;
+  }
+  .browser-content {
+    @apply flex-grow overflow-y-auto p-4 bg-gray-200 text-gray-800; /* Light background for 'web page' content */
+  }
+  /* Wireshark specific styles */
+  .wireshark-container {
+    @apply w-full h-full flex flex-col;
+  }
+  .wireshark-pane {
+    @apply flex-grow overflow-auto border-t border-gray-700/50 bg-gray-900/80 p-2 font-mono text-xs;
+  }
+  .wireshark-toolbar {
+    @apply flex items-center p-1 bg-gray-800/80 border-b border-gray-700/50;
+  }
+  /* Terminal specific styles */
+  .llm-terminal-container {
+    @apply w-full h-full flex flex-col font-mono p-2 relative;
+    background-color: var(--terminal-bg, #1e1e1e);
+    color: var(--terminal-fg, #32cd32);
+  }
+  .llm-terminal-output {
+    @apply flex-grow overflow-y-auto whitespace-pre-wrap;
+  }
+  .llm-terminal-input-line {
+    @apply flex-shrink-0 flex items-center;
+  }
+  .llm-terminal-prompt {
+    @apply mr-2;
+    color: var(--terminal-fg, #32cd32);
+  }
+  .llm-terminal-input {
+    @apply border-none focus:outline-none w-full p-1;
+    background-color: transparent;
+    color: var(--terminal-fg, #32cd32);
+  }
+  /* Terminal Color Schemes */
+  [data-terminal-scheme='default'] {
+    --terminal-bg: transparent;
+    --terminal-fg: #32cd32; /* LimeGreen */
+    --terminal-link: #66ff66;
+    --terminal-scrollbar-thumb: #3a5f3a;
+    --terminal-scrollbar-thumb-hover: #4a7f4a;
+  }
+  [data-terminal-scheme='amber'] {
+    --terminal-bg: transparent;
+    --terminal-fg: #ffb000; /* Amber */
+    --terminal-link: #ffd700; /* Gold */
+    --terminal-scrollbar-thumb: #805800;
+    --terminal-scrollbar-thumb-hover: #b37c00;
+  }
+  [data-terminal-scheme='white'] {
+    --terminal-bg: transparent;
+    --terminal-fg: #dcdcdc; /* Gainsboro */
+    --terminal-link: #ffffff;
+    --terminal-scrollbar-thumb: #555;
+    --terminal-scrollbar-thumb-hover: #777;
+  }
+  [data-terminal-scheme='scanlines'] {
+    --terminal-bg: transparent;
+    --terminal-fg: #00dd00;
+    --terminal-link: #33ff33;
+    --terminal-scrollbar-thumb: #3a5f3a;
+    --terminal-scrollbar-thumb-hover: #4a7f4a;
+  }
+  /* Scanlines effect */
+  [data-terminal-scheme='scanlines'] .llm-terminal-container::after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.06),
+        rgba(0, 255, 0, 0.02),
+        rgba(0, 0, 255, 0.06)
+      );
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+  /* Terminal link color */
+  .llm-terminal-container a {
+    color: var(--terminal-link, #66ff66);
+    text-decoration: underline;
+  }
+  /* Custom Scrollbar for Terminal */
+  .llm-terminal-output::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .llm-terminal-output::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .llm-terminal-output::-webkit-scrollbar-thumb {
+    background-color: var(--terminal-scrollbar-thumb, #555);
+    border-radius: 4px;
+  }
+  .llm-terminal-output::-webkit-scrollbar-thumb:hover {
+    background-color: var(--terminal-scrollbar-thumb-hover, #777);
+  }
+  /* File Explorer specific styles */
+  .file-explorer-container {
+    @apply w-full h-full flex flex-col p-2;
+  }
+  .file-explorer-toolbar {
+    @apply flex items-center p-1 bg-gray-900/80 border-b border-gray-700/50 flex-shrink-0;
+  }
+  .file-explorer-address-bar {
+    @apply flex-grow bg-gray-900 border border-gray-600 rounded-md px-2 py-1 ml-2 text-sm font-mono text-gray-200;
+  }
+  .file-explorer-content {
+    @apply flex-grow overflow-y-auto p-2 flex flex-wrap content-start;
+  }
+  .file-explorer-item {
+    @apply w-28 h-28 flex flex-col items-center justify-center text-center m-2 p-2 cursor-pointer select-none rounded-lg transition-colors hover:bg-blue-500/20 focus:bg-blue-500/20 focus:outline-none focus:ring-2 focus:ring-blue-500/50;
+  }
+  .file-explorer-icon {
+    @apply text-5xl mb-2;
+  }
+  .file-explorer-name {
+    @apply text-xs text-gray-300 font-medium break-words max-w-full leading-tight;
+  }
+}
